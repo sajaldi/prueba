@@ -16,5 +16,8 @@ RUN pip install -r requirements.txt
 # Copiamos el resto del proyecto al contenedor
 COPY . /app/
 
+RUN apt-get update && apt-get install -y bash
+
+
 # Ejecutamos gunicorn como servidor WSGI
 CMD ["gunicorn", "prueba.wsgi:application", "--bind", "0.0.0.0:8000"]
